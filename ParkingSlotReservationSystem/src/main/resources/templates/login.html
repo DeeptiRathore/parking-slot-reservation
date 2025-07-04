@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #1d3557, #457b9d, #a8dadc, #f1faee);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 42px;
+            color: #000000; /* Changed from white to black */
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease-in-out;
+            letter-spacing: 2px;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 40px 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            animation: fadeInUp 1.5s ease-in-out;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-title {
+            text-align: center;
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+			font-weight: bold;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 15px;
+            color: #333333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            background-color: #f7f7f7;
+        }
+
+        button {
+            margin-top: 25px;
+            width: 100%;
+            padding: 12px;
+            background-color: #457b9d;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #345d7e;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #eeeeee;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        a {
+            color: #f1faee;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <h1>ParkEase</h1>
+
+    <form th:action="@{/login}" method="post">
+        <div class="form-title">Login</div>
+
+        <label>Email:</label>
+        <input type="email" name="username" required />
+
+        <label>Password:</label>
+        <input type="password" name="password" required />
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p>Don't have an account? <a th:href="@{/register}">Register</a></p>
+</body>
+</html>
